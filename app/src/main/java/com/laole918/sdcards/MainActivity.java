@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         File sdcard0 = new File(SDCardsUtils.getSDCard0());
         String s1 = SDCardsUtils.getSDCard1(this);
         File sdcard1 = new File(s1 == null ? "" : s1);
-//        String s2 = SDCardsUtils.getUsbOTG(this);
-//        File usbotg = new File(s2 == null ? "" : s2);
 
         File[] files = new File[] {sdcard0, sdcard1};
         for (File file : files) {
@@ -43,6 +41,5 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println("getSDCard0State:" + SDCardsUtils.getSDCard0State());
         System.out.println("getSDCard1State:" + SDCardsUtils.getSDCard1State(this));
-//        System.out.println("getUsbOTGState:" + SDCardsUtils.getUsbOTGState(this));
     }
 }
