@@ -18,7 +18,6 @@ public class SDCardsUtils {
 
     private static String sdcard0 = null;
     private static String sdcard1 = null;
-    private static String usbOtg = null;
     private static boolean initialized = false;
 
     public static String getSDCard0State() {
@@ -31,10 +30,6 @@ public class SDCardsUtils {
 
     public static String getSDCard1State(Context context) {
         return getSDCardState(context, sdcard1);
-    }
-
-    private static String getUsbOTGState(Context context) {
-        return getSDCardState(context, usbOtg);
     }
 
     @TargetApi(19)
@@ -74,11 +69,6 @@ public class SDCardsUtils {
         return sdcard1;
     }
 
-    private static String getUsbOTG(Context context) {
-        initialize(context);
-        return usbOtg;
-    }
-
     private static void initialize(Context context) {
         if (!initialized) {
             synchronized (SDCardsUtils.class) {
@@ -86,13 +76,12 @@ public class SDCardsUtils {
                     String[] dirs = getExternalDirs(context);
                     if (dirs != null) {
                         int length = dirs.length;
-                        String[] dirsPath = new String[3];
-                        for (int i = 0; i < length && i < 3; i++) {
-                            dirsPath[i] = dirs[i];
+                        if(length > 0) {
+                            sdcard0 = dirs[0];
                         }
-                        sdcard0 = dirsPath[0];
-                        sdcard1 = dirsPath[1];
-                        usbOtg = dirsPath[2];
+                        if(length > 1) {
+                            sdcard1 = dirs[1];
+                        }
                     }
                     initialized = true;
                 }
