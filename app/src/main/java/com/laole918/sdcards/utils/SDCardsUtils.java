@@ -20,6 +20,20 @@ public class SDCardsUtils {
     private static String sdcard1 = null;
     private static boolean initialized = false;
 
+    public static String getSDCard0(Context context) {
+        initialize(context);
+        return sdcard0;
+    }
+
+    public static String getSDCard0() {
+        return Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+
+    public static String getSDCard1(Context context) {
+        initialize(context);
+        return sdcard1;
+    }
+
     public static String getSDCard0State() {
         return Environment.getExternalStorageState();
     }
@@ -53,20 +67,6 @@ public class SDCardsUtils {
         } else {
             return Environment.MEDIA_UNMOUNTED;
         }
-    }
-
-    public static String getSDCard0(Context context) {
-        initialize(context);
-        return sdcard0;
-    }
-
-    public static String getSDCard0() {
-        return Environment.getExternalStorageDirectory().getAbsolutePath();
-    }
-
-    public static String getSDCard1(Context context) {
-        initialize(context);
-        return sdcard1;
     }
 
     private static void initialize(Context context) {
