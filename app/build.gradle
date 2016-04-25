@@ -14,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     signingConfigs {
         releaseConfig {
             keyAlias properties.get("keystore.keyAlias")
@@ -22,6 +23,7 @@ android {
             storePassword properties.get("keystore.storePassword")
         }
     }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.releaseConfig
@@ -32,6 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding {
         enabled = true
     }
